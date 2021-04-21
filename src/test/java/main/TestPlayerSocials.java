@@ -24,7 +24,12 @@ import socialize.database.implementations.SetDatabaseImpl;
 import socialize.tracing.AnonymousOrigin;
 import socialize.tracing.Origin;
 import socialize.tracing.PlayerInteractionOrigin;
-
+/**
+ * Primitive tests used to ensure the integrity of the codebase
+ * 
+ * @author Krystilize
+ *
+ */
 public class TestPlayerSocials {
 	
 	static Random random = new Random();
@@ -126,6 +131,14 @@ public class TestPlayerSocials {
 			Assert.assertTrue(total == (8745 + 142));
 		}
 		
+		// SelectedSetDatabase
+		
+		{
+			BackgroundData selected = socials.getBackgrounds().getSelected();
+			
+			Assert.assertTrue(selected.getID() == 3212323);
+		}
+		
 		System.out.println("Testing complete!");
 	}
 	
@@ -224,7 +237,7 @@ public class TestPlayerSocials {
 	
 	public static SelectedSetDatabase<BackgroundData> getBackgroundDatabase() {
 		BackgroundData data = BackgroundData.from(
-			random.nextInt(),
+			3212323,
 			TEST_ORIGIN_A
 		);
 		
