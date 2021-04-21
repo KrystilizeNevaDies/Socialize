@@ -4,17 +4,13 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import socialize.database.SelectedSetDatabase;
+import socialize.database.SetDatabase;
 
-public class FakeSelectedSetDatabase<T> implements SelectedSetDatabase<T> {
+public class SetDatabaseImpl<T> implements SetDatabase<T> {
 	Set<T> set;
-	T selected;
 	
-	public FakeSelectedSetDatabase(Set<T> set, T selected) {
-		assert(set.contains(selected));
-		
+	public SetDatabaseImpl(Set<T> set) {
 		this.set = set;
-		this.selected = selected;
 	}
 	
 	@Override
@@ -28,11 +24,6 @@ public class FakeSelectedSetDatabase<T> implements SelectedSetDatabase<T> {
 			.filter(condition)
 			.findAny();
 		return optional.orElse(null);
-	}
-
-	@Override
-	public T getSelected() {
-		return selected;
 	}
 
 }

@@ -32,7 +32,7 @@ public class PlayerInteractionOrigin extends Origin {
 	public String getOriginNotes() {
 		return super.getOriginNotes() + "\n"
 				+ "Sender: " + sender + "\n"
-				+ "Recipient: " + recipient + "\n";
+				+ "Recipient: " + recipient;
 	}
 
 	@Override

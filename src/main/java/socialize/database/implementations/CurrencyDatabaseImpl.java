@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 import socialize.data.CurrencyTransactionData;
 import socialize.database.CurrencyDatabase;
 
-public class FakeCurrencyDatabase<T extends CurrencyTransactionData> implements CurrencyDatabase<T> {
+public class CurrencyDatabaseImpl<T extends CurrencyTransactionData> implements CurrencyDatabase<T> {
 	double total;
 	Set<T> set;
 	
-	public FakeCurrencyDatabase(Set<T> set) {
+	public CurrencyDatabaseImpl(Set<T> set) {
 		this.set = set;
 		this.total = set.stream()
 		.collect(
