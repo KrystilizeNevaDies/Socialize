@@ -11,7 +11,22 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
+sourceSets {
+    main {
+    	java {
+    		['src/main/java']
+    	}
+    }
+    test {
+    	java {
+        	['src/test/java']
+        }
+    }
+}
+
 dependencies {
+	testImplementation("junit:junit:4.13")
+
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     runtimeOnly 'com.github.Minestom:Minestom:75da093475'
 }

@@ -1,8 +1,11 @@
-package test;
+package main;
 import java.util.Date;
 import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 import socialize.PlayerSocials;
 import socialize.data.BackgroundData;
@@ -29,7 +32,8 @@ public class TestPlayerSocials {
 	private static final Origin TEST_ORIGIN_A = new AnonymousOrigin(new Date());
 	private static final Origin TEST_ORIGIN_B = new PlayerInteractionOrigin(new Date(random.nextInt()), UUID.randomUUID(), UUID.randomUUID());
 	
-	public static void main(String[] args) {
+	@Test
+	public void doTests() {
 		
 		// Create PlayerSocials object
 		PlayerSocials socials = PlayerSocials.builder(UUID.randomUUID())
@@ -85,6 +89,44 @@ public class TestPlayerSocials {
 			System.out.println(data.getOrigin().getOriginNotes());
 		});
 		System.out.println("}");
+		
+		// Predicate tests
+		System.out.println("");
+		System.out.println("Running prdicate tests...");
+		
+		
+		// SetDatabase
+		{
+			BadgeData data = socials.getBadges().get((badgeData) -> {
+				return badgeData.getID() == 123432;
+			});
+			Assert.assertNotNull(data);
+		}
+		
+		// CurrencyDatabase
+		{
+			ShellsData data = socials.getShells().get((shellsData) -> {
+				return shellsData.getAmount() == 8745;
+			});
+			
+			Assert.assertNotNull(data);
+		}
+		
+		{
+			ShellsData data = socials.getShells().get((shellsData) -> {
+				return shellsData.getAmount() == 874235;
+			});
+			
+			Assert.assertNull(data);
+		}
+		
+		{
+			double total = socials.getShells().getTotal();
+			
+			Assert.assertTrue(total == (8745 + 142));
+		}
+		
+		System.out.println("Testing complete!");
 	}
 	
 	public static SetDatabase<BadgeData> getBadgeDatabase() {
@@ -151,11 +193,11 @@ public class TestPlayerSocials {
 		return new CurrencyDatabaseImpl<ShellsData>(
 			Set.of(
 				ShellsData.from(
-					random.nextDouble(),
+					8745,
 					TEST_ORIGIN_A
 				),
 				ShellsData.from(
-					random.nextDouble(),
+					142,
 					TEST_ORIGIN_B
 				)
 			)

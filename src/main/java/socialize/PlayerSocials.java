@@ -12,7 +12,6 @@ import socialize.data.ShellsData;
 import socialize.database.CurrencyDatabase;
 import socialize.database.SelectedSetDatabase;
 import socialize.database.SetDatabase;
-import socialize.util.Builder;
 
 /*
  * This class is used to retrieve the data related to player socials
@@ -90,7 +89,7 @@ public class PlayerSocials {
 		return background;
 	}
 	
-	public static class PlayerSocialsBuilder implements Builder<PlayerSocials> {
+	public static class PlayerSocialsBuilder {
 		UUID uuid;
 		
 		// Databases
@@ -106,7 +105,6 @@ public class PlayerSocials {
 			this.uuid = uuid;
 		}
 
-		@Override
 		public PlayerSocials build() {
 			return new PlayerSocials(uuid, mail, gift, badge, friend, shell, bio, background);
 		}
