@@ -2,8 +2,6 @@ package socialize.database.implementations;
 
 import java.util.Set;
 
-import org.jetbrains.annotations.NotNull;
-
 import socialize.database.SelectedSetDatabase;
 
 public class SelectedSetDatabaseImpl<T> extends SetDatabaseImpl<T> implements SelectedSetDatabase<T> {
@@ -22,7 +20,7 @@ public class SelectedSetDatabaseImpl<T> extends SetDatabaseImpl<T> implements Se
 	}
 
 	@Override
-	public void setSelected(@NotNull T selected) {
+	public void setSelected(T selected) {
 		this.selected = selected;
 	}
 }
