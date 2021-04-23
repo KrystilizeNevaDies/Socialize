@@ -5,6 +5,7 @@ import java.util.UUID;
 import socialize.data.BackgroundData;
 import socialize.data.BadgeData;
 import socialize.data.BioData;
+import socialize.data.CoinsData;
 import socialize.data.FriendData;
 import socialize.data.GiftData;
 import socialize.data.MailData;
@@ -40,6 +41,7 @@ public class PlayerSocials {
 	private SetDatabase<BadgeData> badge;
 	private SetDatabase<FriendData> friend;
 	private CurrencyDatabase<ShellsData> shell;
+	private CurrencyDatabase<CoinsData> coin;
 	private SelectedSetDatabase<BioData> bio;
 	private SelectedSetDatabase<BackgroundData> background;
 	
@@ -49,6 +51,7 @@ public class PlayerSocials {
 			SetDatabase<BadgeData> badge,
 			SetDatabase<FriendData> friend,
 			CurrencyDatabase<ShellsData> shell,
+			CurrencyDatabase<CoinsData> coin,
 			SelectedSetDatabase<BioData> bio,
 			SelectedSetDatabase<BackgroundData> background
 	) {
@@ -57,6 +60,7 @@ public class PlayerSocials {
 		this.badge = badge;
 		this.friend = friend;
 		this.shell = shell;
+		this.coin = coin;
 		this.bio = bio;
 		this.background = background;
 	}
@@ -80,6 +84,10 @@ public class PlayerSocials {
 	public CurrencyDatabase<ShellsData> getShells() {
 		return shell;
 	}
+	
+	public CurrencyDatabase<CoinsData> getCoins() {
+		return coin;
+	}
 
 	public SelectedSetDatabase<BioData> getBios() {
 		return bio;
@@ -98,6 +106,7 @@ public class PlayerSocials {
 		private SetDatabase<BadgeData> badge;
 		private SetDatabase<FriendData> friend;
 		private CurrencyDatabase<ShellsData> shell;
+		private CurrencyDatabase<CoinsData> coin;
 		private SelectedSetDatabase<BioData> bio;
 		private SelectedSetDatabase<BackgroundData> background;
 		
@@ -106,7 +115,7 @@ public class PlayerSocials {
 		}
 
 		public PlayerSocials build() {
-			return new PlayerSocials(uuid, mail, gift, badge, friend, shell, bio, background);
+			return new PlayerSocials(uuid, mail, gift, badge, friend, shell, coin, bio, background);
 		}
 
 		public PlayerSocialsBuilder setMailDatabase(SetDatabase<MailData> mail) {
@@ -131,6 +140,11 @@ public class PlayerSocials {
 		
 		public PlayerSocialsBuilder setShellDatabase(CurrencyDatabase<ShellsData> shell) {
 			this.shell = shell;
+			return this;
+		}
+		
+		public PlayerSocialsBuilder setCoinDatabase(CurrencyDatabase<CoinsData> coin) {
+			this.coin = coin;
 			return this;
 		}
 		
