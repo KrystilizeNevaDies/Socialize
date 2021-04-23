@@ -12,7 +12,7 @@ public interface SelectedSetDatabase<T> extends SetDatabase<T> {
 	 * Gets the data that is currently selected in this database
 	 * @return
 	 */
-	public @NotNull T getSelected();
+	public T getSelected();
 	
 	/**
 	 * Sets the data that is currently selected in this database
