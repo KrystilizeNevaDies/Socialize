@@ -1,7 +1,6 @@
 package socialize.database;
 
 import java.util.Set;
-import java.util.function.Predicate;
 
 /**
  * This is a class used to represent a connection between an external database and the server.
@@ -13,19 +12,11 @@ import java.util.function.Predicate;
  *
  * @param <T>
  */
-public interface SetDatabase<T> {
+public interface SetDatabase<T> extends IDatabase<T> {
 	/**
-	 * Gets all values from the database, see {@link SetDatabase}'s comments for more info
-	 * @param uuid
-	 * @param consumer
+	 * Gets the set that is represented by this database
+	 * 
+	 * @return set
 	 */
-	public Set<T> getAll();
-
-	/**
-	 * Gets the first value from the database that fits the specific condition, see {@link SetDatabase}'s comments for more info
-	 * @param uuid
-	 * @param condition
-	 * @param consumer
-	 */
-	public T get(Predicate<T> condition);
+	public Set<T> getSet();
 }

@@ -26,4 +26,13 @@ public class SetDatabaseImpl<T> implements SetDatabase<T> {
 		return optional.orElse(null);
 	}
 
+	@Override
+	public void add(T data) {
+		set.add(data);
+	}
+
+	@Override
+	public Set<T> getSet() {
+		return set;
+	}
 }

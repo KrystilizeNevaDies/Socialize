@@ -1,38 +1,28 @@
 package socialize.database.implementations;
 
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
+
+import org.jetbrains.annotations.NotNull;
 
 import socialize.database.SelectedSetDatabase;
 
-public class SelectedSetDatabaseImpl<T> implements SelectedSetDatabase<T> {
-	Set<T> set;
+public class SelectedSetDatabaseImpl<T> extends SetDatabaseImpl<T> implements SelectedSetDatabase<T> {
+	
 	T selected;
 	
 	public SelectedSetDatabaseImpl(Set<T> set, T selected) {
-		assert(set.contains(selected));
+		super(set);
 		
-		this.set = set;
 		this.selected = selected;
 	}
 	
-	@Override
-	public Set<T> getAll() {
-		return set;
-	}
-
-	@Override
-	public T get(Predicate<T> condition) {
-		Optional<T> optional = set.stream()
-			.filter(condition)
-			.findAny();
-		return optional.orElse(null);
-	}
-
 	@Override
 	public T getSelected() {
 		return selected;
 	}
 
+	@Override
+	public void setSelected(@NotNull T selected) {
+		this.selected = selected;
+	}
 }
