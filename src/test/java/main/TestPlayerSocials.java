@@ -34,8 +34,8 @@ public class TestPlayerSocials {
 	
 	static Random random = new Random();
 	
-	private static final Origin TEST_ORIGIN_A = new AnonymousOrigin(new Date());
-	private static final Origin TEST_ORIGIN_B = new PlayerInteractionOrigin(new Date(random.nextInt()), UUID.randomUUID(), UUID.randomUUID());
+	private static final Origin TEST_ORIGIN_A = new AnonymousOrigin(Origin.ROOT, new Date());
+	private static final Origin TEST_ORIGIN_B = new PlayerInteractionOrigin(Origin.ROOT, new Date(random.nextInt()), UUID.randomUUID(), UUID.randomUUID());
 	
 	@Test
 	public void doTests() {

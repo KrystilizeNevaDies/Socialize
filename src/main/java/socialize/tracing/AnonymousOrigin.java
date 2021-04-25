@@ -10,8 +10,8 @@ import java.util.Date;
  * @author Krystilize
  */
 public class AnonymousOrigin extends Origin {
-	public AnonymousOrigin(Date date) {
-		super(date);
+	public AnonymousOrigin(Origin parent, Date date) {
+		super(parent, date);
 	}
 
 	@Override

@@ -14,8 +14,8 @@ public class PlayerInteractionOrigin extends Origin {
 	UUID recipient;
 	UUID sender;
 	
-	public PlayerInteractionOrigin(Date date, UUID recipient, UUID sender) {
-		super(date);
+	public PlayerInteractionOrigin(Origin parent, Date date, UUID recipient, UUID sender) {
+		super(parent, date);
 		this.recipient = recipient;
 		this.sender = sender;
 	}
