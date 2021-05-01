@@ -5,18 +5,11 @@ import socialize.tracing.Origin;
 public interface CoinsData extends CurrencyTransactionData {
 	
 	/**
-	 * Gets the amount of shells in this transaction
+	 * Gets the amount of coins in this transaction
 	 * 
 	 * @return amount
 	 */
 	public double getAmount();
-	
-	/**
-	 * Gets the transaction origin
-	 * 
-	 * @return Origin
-	 */
-	public Origin getOrigin();
 	
 	/**
 	 * Creates an immutable version of this data

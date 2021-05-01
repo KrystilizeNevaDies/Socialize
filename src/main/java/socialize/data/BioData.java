@@ -2,7 +2,7 @@ package socialize.data;
 
 import socialize.tracing.Origin;
 
-public interface BioData {
+public interface BioData extends OriginData {
 	
 	/**
 	 * Gets the bio string
@@ -10,13 +10,6 @@ public interface BioData {
 	 * @return String
 	 */
 	public String getBio();
-	
-	/**
-	 * Gets the origin of this bio
-	 * 
-	 * @return Origin
-	 */
-	public Origin getOrigin();
 	
 	/**
 	 * Creates an immutable version of this data

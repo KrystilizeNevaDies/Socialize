@@ -2,7 +2,7 @@ package socialize.data;
 
 import socialize.tracing.Origin;
 
-public interface GiftData {
+public interface GiftData extends OriginData {
 	
 	/**
 	 * Gets the gift ID
@@ -10,13 +10,6 @@ public interface GiftData {
 	 * @return ID
 	 */
 	public int getID();
-	
-	/**
-	 * Gets the gift origin
-	 * 
-	 * @return Origin
-	 */
-	public Origin getOrigin();
 	
 	/**
 	 * Creates an immutable version of this data

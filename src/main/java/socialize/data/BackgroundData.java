@@ -2,7 +2,7 @@ package socialize.data;
 
 import socialize.tracing.Origin;
 
-public interface BackgroundData {
+public interface BackgroundData extends OriginData {
 	
 	/**
 	 * Gets the ID of this background
@@ -10,13 +10,6 @@ public interface BackgroundData {
 	 * @return ID
 	 */
 	public int getID();
-	
-	/**
-	 * Gets the origin of this background
-	 * 
-	 * @return Origin
-	 */
-	public Origin getOrigin();
 	
 	/**
 	 * Creates an immutable version of this data

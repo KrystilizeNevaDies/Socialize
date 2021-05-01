@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import socialize.tracing.Origin;
 
-public interface FriendData {
+public interface FriendData extends OriginData {
 	
 	/**
 	 * Gets the UUID of this friend
@@ -19,13 +19,6 @@ public interface FriendData {
 	 * @return bool
 	 */
 	public boolean isFriend();
-	
-	/**
-	 * Gets the origin of this friend
-	 * 
-	 * @return Origin
-	 */
-	public Origin getOrigin();
 	
 	/**
 	 * Creates an immutable version of this data

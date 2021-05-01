@@ -2,7 +2,7 @@ package socialize.data;
 
 import socialize.tracing.Origin;
 
-public interface BadgeData {
+public interface BadgeData extends OriginData {
 	
 	/**
 	 * Gets the ID of this badge
@@ -10,13 +10,6 @@ public interface BadgeData {
 	 * @return ID
 	 */
 	public int getID();
-	
-	/**
-	 * Gets the origin of this badge
-	 * 
-	 * @return Origin
-	 */
-	public Origin getOrigin();
 	
 	/**
 	 * Creates an immutable version of this data

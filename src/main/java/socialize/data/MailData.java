@@ -2,7 +2,7 @@ package socialize.data;
 
 import socialize.tracing.Origin;
 
-public interface MailData {
+public interface MailData extends OriginData {
 	
 	/**
 	 * Gets the mail string
@@ -10,13 +10,6 @@ public interface MailData {
 	 * @return String
 	 */
 	public String getMail();
-	
-	/**
-	 * Gets the mail origin
-	 * 
-	 * @return Origin
-	 */
-	public Origin getOrigin();
 	
 	/**
 	 * Creates an immutable version of this data

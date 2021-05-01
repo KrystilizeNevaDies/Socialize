@@ -2,6 +2,8 @@ package socialize.database;
 
 import java.util.Set;
 
+import socialize.data.OriginData;
+
 /**
  * This database type is used to represent a connection between an external database and the server.
  * <br><br>
@@ -12,7 +14,7 @@ import java.util.Set;
  *
  * @param <T>
  */
-public interface SetDatabase<T> extends IDatabase<T> {
+public interface SetDatabase<T extends OriginData> extends IDatabase<T> {
 	/**
 	 * Gets the set that is represented by this database
 	 * 

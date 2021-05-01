@@ -2,9 +2,10 @@ package socialize.database.implementations;
 
 import java.util.Set;
 
+import socialize.data.OriginData;
 import socialize.database.SelectedSetDatabase;
 
-public class SelectedSetDatabaseImpl<T> extends SetDatabaseImpl<T> implements SelectedSetDatabase<T> {
+public class SelectedSetDatabaseImpl<T extends OriginData> extends SetDatabaseImpl<T> implements SelectedSetDatabase<T> {
 	
 	T selected;
 	

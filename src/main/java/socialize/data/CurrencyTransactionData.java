@@ -1,6 +1,6 @@
 package socialize.data;
 
-public interface CurrencyTransactionData {
+public interface CurrencyTransactionData extends OriginData {
 	
 	/**
 	 * Gets the currency amount in this transaction
