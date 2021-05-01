@@ -3,7 +3,7 @@ package socialize.database;
 import socialize.data.CurrencyTransactionData;
 
 /**
- * This is an interface used to represent a connection for a currency between an external database and the server.
+ * This is datbase type is used to represent a connection for a currency between an external database and the server.
  * 
  * @author Krystilize
  *

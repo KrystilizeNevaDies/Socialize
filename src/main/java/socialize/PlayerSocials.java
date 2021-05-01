@@ -6,11 +6,13 @@ import socialize.data.BackgroundData;
 import socialize.data.BadgeData;
 import socialize.data.BioData;
 import socialize.data.CoinsData;
+import socialize.data.CooldownData;
 import socialize.data.FriendData;
 import socialize.data.GiftData;
 import socialize.data.MailData;
 import socialize.data.ShellsData;
 import socialize.database.CurrencyDatabase;
+import socialize.database.MapDatabase;
 import socialize.database.SelectedSetDatabase;
 import socialize.database.SetDatabase;
 
@@ -25,7 +27,7 @@ import socialize.database.SetDatabase;
  * Backgrounds - Done
  * Badges - Done
  * Friends - Done
- * Shells - 
+ * Shells - Done
  */
 public class PlayerSocials {
 	
@@ -36,6 +38,7 @@ public class PlayerSocials {
     	return new PlayerSocialsBuilder(uuid);
     }
 	
+	private MapDatabase<String, CooldownData> cooldown;
 	private SetDatabase<MailData> mail;
 	private SetDatabase<GiftData> gift;
 	private SetDatabase<BadgeData> badge;
@@ -53,7 +56,8 @@ public class PlayerSocials {
 			CurrencyDatabase<ShellsData> shell,
 			CurrencyDatabase<CoinsData> coin,
 			SelectedSetDatabase<BioData> bio,
-			SelectedSetDatabase<BackgroundData> background
+			SelectedSetDatabase<BackgroundData> background,
+			MapDatabase<String, CooldownData> cooldown
 	) {
 		this.mail = mail;
 		this.gift = gift;
@@ -63,6 +67,7 @@ public class PlayerSocials {
 		this.coin = coin;
 		this.bio = bio;
 		this.background = background;
+		this.cooldown = cooldown;
 	}
 	
 	public SetDatabase<MailData> getMail() {
@@ -97,8 +102,12 @@ public class PlayerSocials {
 		return background;
 	}
 	
+	public MapDatabase<String, CooldownData> getCooldowns() {
+		return cooldown;
+	}
+	
 	public static class PlayerSocialsBuilder {
-		UUID uuid;
+		private UUID uuid;
 		
 		// Databases
 		private SetDatabase<MailData> mail;
@@ -109,13 +118,14 @@ public class PlayerSocials {
 		private CurrencyDatabase<CoinsData> coin;
 		private SelectedSetDatabase<BioData> bio;
 		private SelectedSetDatabase<BackgroundData> background;
+		private MapDatabase<String, CooldownData> cooldown;
 		
 		private PlayerSocialsBuilder(UUID uuid) {
 			this.uuid = uuid;
 		}
 
 		public PlayerSocials build() {
-			return new PlayerSocials(uuid, mail, gift, badge, friend, shell, coin, bio, background);
+			return new PlayerSocials(uuid, mail, gift, badge, friend, shell, coin, bio, background, cooldown);
 		}
 
 		public PlayerSocialsBuilder setMailDatabase(SetDatabase<MailData> mail) {
@@ -155,6 +165,11 @@ public class PlayerSocials {
 
 		public PlayerSocialsBuilder setBackgroundDatabase(SelectedSetDatabase<BackgroundData> background) {
 			this.background = background;
+			return this;
+		}
+		
+		public PlayerSocialsBuilder setCooldownDatabase(MapDatabase<String, CooldownData> cooldown) {
+			this.cooldown = cooldown;
 			return this;
 		}
 	}

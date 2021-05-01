@@ -1,7 +1,7 @@
 package socialize.database;
 
 /**
- * This database is the same as {@link SetDatabase} except one of the entries are marked as active
+ * This database is the same as {@link SetDatabase} except one of the entries are marked as selected
  * 
  * @author Krystilize
  */

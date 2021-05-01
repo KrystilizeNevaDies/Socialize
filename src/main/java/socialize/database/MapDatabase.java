@@ -1,6 +1,6 @@
 package socialize.database;
 
-import java.util.Set;
+import java.util.Map;
 
 /**
  * This database type is used to represent a connection between an external database and the server.
@@ -12,11 +12,11 @@ import java.util.Set;
  *
  * @param <T>
  */
-public interface SetDatabase<T> extends IDatabase<T> {
+public interface MapDatabase<K, V> extends IDatabase<Map.Entry<K, V>> {
 	/**
-	 * Gets the set that is represented by this database
+	 * Gets the map that is represented by this database
 	 * 
-	 * @return set
+	 * @return map
 	 */
-	public Set<T> getSet();
+	public Map<K, V> getMap();
 }
