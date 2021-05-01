@@ -162,11 +162,13 @@ public class TestPlayerSocials {
 			Set.of(
 				FriendData.from(
 					new UUID(1, 0),
-					TEST_ORIGIN_A
+					TEST_ORIGIN_A,
+					true
 				),
 				FriendData.from(
 					new UUID(2, 0),
-					TEST_ORIGIN_B
+					TEST_ORIGIN_B,
+					false
 				)
 			)
 		);
