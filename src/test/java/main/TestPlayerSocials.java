@@ -16,9 +16,11 @@ import socialize.data.GiftData;
 import socialize.data.MailData;
 import socialize.data.ShellsData;
 import socialize.database.CurrencyDatabase;
+import socialize.database.FriendDatabase;
 import socialize.database.SelectedSetDatabase;
 import socialize.database.SetDatabase;
 import socialize.database.implementations.CurrencyDatabaseImpl;
+import socialize.database.implementations.FriendDatabaseImpl;
 import socialize.database.implementations.SelectedSetDatabaseImpl;
 import socialize.database.implementations.SetDatabaseImpl;
 import socialize.tracing.AnonymousOrigin;
@@ -157,16 +159,16 @@ public class TestPlayerSocials {
 		);
 	}
 	
-	public static SetDatabase<FriendData> getFriendDatabase() {
-		return new SetDatabaseImpl<FriendData>(
+	public static FriendDatabase getFriendDatabase() {
+		return new FriendDatabaseImpl(
 			Set.of(
 				FriendData.from(
-					new UUID(1, 0),
+					new UUID(random.nextLong(), random.nextLong()),
 					TEST_ORIGIN_A,
 					true
 				),
 				FriendData.from(
-					new UUID(2, 0),
+					new UUID(random.nextLong(), random.nextLong()),
 					TEST_ORIGIN_B,
 					false
 				)

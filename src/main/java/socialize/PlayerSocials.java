@@ -7,11 +7,11 @@ import socialize.data.BadgeData;
 import socialize.data.BioData;
 import socialize.data.CoinsData;
 import socialize.data.CooldownData;
-import socialize.data.FriendData;
 import socialize.data.GiftData;
 import socialize.data.MailData;
 import socialize.data.ShellsData;
 import socialize.database.CurrencyDatabase;
+import socialize.database.FriendDatabase;
 import socialize.database.MapDatabase;
 import socialize.database.SelectedSetDatabase;
 import socialize.database.SetDatabase;
@@ -42,9 +42,9 @@ public class PlayerSocials {
 	private SetDatabase<MailData> mail;
 	private SetDatabase<GiftData> gift;
 	private SetDatabase<BadgeData> badge;
-	private SetDatabase<FriendData> friend;
 	private CurrencyDatabase<ShellsData> shell;
 	private CurrencyDatabase<CoinsData> coin;
+	private FriendDatabase friend;
 	private SelectedSetDatabase<BioData> bio;
 	private SelectedSetDatabase<BackgroundData> background;
 	
@@ -52,9 +52,9 @@ public class PlayerSocials {
 			SetDatabase<MailData> mail,
 			SetDatabase<GiftData> gift,
 			SetDatabase<BadgeData> badge,
-			SetDatabase<FriendData> friend,
 			CurrencyDatabase<ShellsData> shell,
 			CurrencyDatabase<CoinsData> coin,
+			FriendDatabase friend,
 			SelectedSetDatabase<BioData> bio,
 			SelectedSetDatabase<BackgroundData> background,
 			MapDatabase<String, CooldownData> cooldown
@@ -82,16 +82,16 @@ public class PlayerSocials {
 		return badge;
 	}
 	
-	public SetDatabase<FriendData> getFriends() {
-		return friend;
-	}
-	
 	public CurrencyDatabase<ShellsData> getShells() {
 		return shell;
 	}
 	
 	public CurrencyDatabase<CoinsData> getCoins() {
 		return coin;
+	}
+	
+	public FriendDatabase getFriends() {
+		return friend;
 	}
 
 	public SelectedSetDatabase<BioData> getBios() {
@@ -113,9 +113,9 @@ public class PlayerSocials {
 		private SetDatabase<MailData> mail;
 		private SetDatabase<GiftData> gift;
 		private SetDatabase<BadgeData> badge;
-		private SetDatabase<FriendData> friend;
 		private CurrencyDatabase<ShellsData> shell;
 		private CurrencyDatabase<CoinsData> coin;
+		private FriendDatabase friend;
 		private SelectedSetDatabase<BioData> bio;
 		private SelectedSetDatabase<BackgroundData> background;
 		private MapDatabase<String, CooldownData> cooldown;
@@ -125,7 +125,7 @@ public class PlayerSocials {
 		}
 
 		public PlayerSocials build() {
-			return new PlayerSocials(uuid, mail, gift, badge, friend, shell, coin, bio, background, cooldown);
+			return new PlayerSocials(uuid, mail, gift, badge, shell, coin, friend, bio, background, cooldown);
 		}
 
 		public PlayerSocialsBuilder setMailDatabase(SetDatabase<MailData> mail) {
@@ -143,11 +143,6 @@ public class PlayerSocials {
 			return this;
 		}
 		
-		public PlayerSocialsBuilder setFriendDatabase(SetDatabase<FriendData> friend) {
-			this.friend = friend;
-			return this;
-		}
-		
 		public PlayerSocialsBuilder setShellDatabase(CurrencyDatabase<ShellsData> shell) {
 			this.shell = shell;
 			return this;
@@ -155,6 +150,11 @@ public class PlayerSocials {
 		
 		public PlayerSocialsBuilder setCoinDatabase(CurrencyDatabase<CoinsData> coin) {
 			this.coin = coin;
+			return this;
+		}
+		
+		public PlayerSocialsBuilder setFriendDatabase(FriendDatabase friend) {
+			this.friend = friend;
 			return this;
 		}
 		
