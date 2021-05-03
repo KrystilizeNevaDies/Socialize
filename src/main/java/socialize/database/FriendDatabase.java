@@ -2,8 +2,6 @@ package socialize.database;
 
 import java.util.UUID;
 
-import javax.annotation.Nullable;
-
 import socialize.data.FriendData;
 
 /**
@@ -18,5 +16,5 @@ public interface FriendDatabase extends SetDatabase<FriendData> {
 	 * 
 	 * @return set
 	 */
-	public @Nullable FriendData getFriend(UUID uuid);
+	public FriendData getFriend(UUID uuid);
 }
