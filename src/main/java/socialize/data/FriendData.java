@@ -52,8 +52,7 @@ public interface FriendData extends OriginData {
 
 		@Override
 		public boolean isFriend() {
-			// TODO Auto-generated method stub
-			return false;
+			return isFriend;
 		}
 	}
 }
