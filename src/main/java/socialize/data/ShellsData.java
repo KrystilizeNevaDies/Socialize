@@ -1,7 +1,5 @@
 package socialize.data;
 
-import socialize.tracing.Origin;
-
 public interface ShellsData extends CurrencyTransactionData {
 	
 	/**
@@ -16,23 +14,23 @@ public interface ShellsData extends CurrencyTransactionData {
 	 * 
 	 * @return Origin
 	 */
-	public Origin getOrigin();
+	public long getOrigin();
 	
 	/**
 	 * Creates an immutable version of this data
 	 * 
 	 * @return data
 	 */
-	public static ShellsData from(double amount, Origin origin) {
+	public static ShellsData from(double amount, long origin) {
 		return new ShellsDataImpl(amount, origin);
 	}
 	
 	class ShellsDataImpl implements ShellsData {
 		double amount;
 		
-		Origin origin;
+		long origin;
 		
-		ShellsDataImpl(double amount, Origin origin) {
+		ShellsDataImpl(double amount, long origin) {
 			this.amount = amount;
 			this.origin = origin;
 		}
@@ -43,7 +41,7 @@ public interface ShellsData extends CurrencyTransactionData {
 		}
 
 		@Override
-		public Origin getOrigin() {
+		public long getOrigin() {
 			return origin;
 		}
 	}

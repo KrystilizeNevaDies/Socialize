@@ -1,7 +1,5 @@
 package socialize.data;
 
-import socialize.tracing.Origin;
-
 public interface BadgeData extends OriginData {
 	
 	/**
@@ -16,16 +14,16 @@ public interface BadgeData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static BadgeData from(int ID, Origin origin) {
+	public static BadgeData from(int ID, long origin) {
 		return new BadgeDataImpl(ID, origin);
 	}
 	
 	class BadgeDataImpl implements BadgeData {
 		int ID;
 		
-		Origin origin;
+		long origin;
 		
-		BadgeDataImpl(int ID, Origin origin) {
+		BadgeDataImpl(int ID, long origin) {
 			this.ID = ID;
 			this.origin = origin;
 		}
@@ -36,7 +34,7 @@ public interface BadgeData extends OriginData {
 		}
 
 		@Override
-		public Origin getOrigin() {
+		public long getOrigin() {
 			return origin;
 		}
 	}

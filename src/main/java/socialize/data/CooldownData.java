@@ -34,7 +34,7 @@ public interface CooldownData extends OriginData {
 		}
 
 		@Override
-		public Origin getOrigin() {
+		public long getOrigin() {
 			return Origin.ROOT;
 		}
 	}

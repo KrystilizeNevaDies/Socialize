@@ -1,7 +1,5 @@
 package socialize.data;
 
-import socialize.tracing.Origin;
-
 public interface MailData extends OriginData {
 	
 	/**
@@ -16,16 +14,16 @@ public interface MailData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static MailData from(String bio, Origin origin) {
+	public static MailData from(String bio, long origin) {
 		return new MailDataImpl(bio, origin);
 	}
 	
 	class MailDataImpl implements MailData {
 		String mail;
 		
-		Origin origin;
+		long origin;
 		
-		MailDataImpl(String mail, Origin origin) {
+		MailDataImpl(String mail, long origin) {
 			this.mail = mail;
 			this.origin = origin;
 		}
@@ -36,7 +34,7 @@ public interface MailData extends OriginData {
 		}
 
 		@Override
-		public Origin getOrigin() {
+		public long getOrigin() {
 			return origin;
 		}
 	}

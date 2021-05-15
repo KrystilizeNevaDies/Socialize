@@ -28,7 +28,7 @@ public interface MapDatabase<K, V extends OriginData> extends IDatabase<EntryDat
 		public K getKey();
 		public V getValue();
 		
-		public default Origin getOrigin() {
+		public default long getOrigin() {
 			return getValue().getOrigin();
 		}
 		

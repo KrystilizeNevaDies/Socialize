@@ -1,7 +1,5 @@
 package socialize.data;
 
-import socialize.tracing.Origin;
-
 public interface BackgroundData extends OriginData {
 	
 	/**
@@ -16,16 +14,16 @@ public interface BackgroundData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static BackgroundData from(int ID, Origin origin) {
+	public static BackgroundData from(int ID, long origin) {
 		return new BackgroundDataImpl(ID, origin);
 	}
 	
 	class BackgroundDataImpl implements BackgroundData {
 		int ID;
 		
-		Origin origin;
+		long origin;
 		
-		BackgroundDataImpl(int ID, Origin origin) {
+		BackgroundDataImpl(int ID, long origin) {
 			this.ID = ID;
 			this.origin = origin;
 		}
@@ -36,7 +34,7 @@ public interface BackgroundData extends OriginData {
 		}
 
 		@Override
-		public Origin getOrigin() {
+		public long getOrigin() {
 			return origin;
 		}
 	}

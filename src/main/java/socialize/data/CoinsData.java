@@ -1,7 +1,5 @@
 package socialize.data;
 
-import socialize.tracing.Origin;
-
 public interface CoinsData extends CurrencyTransactionData {
 	
 	/**
@@ -16,16 +14,16 @@ public interface CoinsData extends CurrencyTransactionData {
 	 * 
 	 * @return data
 	 */
-	public static CoinsData from(double amount, Origin origin) {
+	public static CoinsData from(double amount, long origin) {
 		return new CoinsDataImpl(amount, origin);
 	}
 	
 	class CoinsDataImpl implements CoinsData {
 		double amount;
 		
-		Origin origin;
+		long origin;
 		
-		CoinsDataImpl(double amount, Origin origin) {
+		CoinsDataImpl(double amount, long origin) {
 			this.amount = amount;
 			this.origin = origin;
 		}
@@ -36,7 +34,7 @@ public interface CoinsData extends CurrencyTransactionData {
 		}
 
 		@Override
-		public Origin getOrigin() {
+		public long getOrigin() {
 			return origin;
 		}
 	}

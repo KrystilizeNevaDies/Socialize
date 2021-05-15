@@ -1,7 +1,5 @@
 package socialize.data;
 
-import socialize.tracing.Origin;
-
 public interface GiftData extends OriginData {
 	
 	/**
@@ -16,16 +14,16 @@ public interface GiftData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static GiftData from(int giftID, Origin origin) {
+	public static GiftData from(int giftID, long origin) {
 		return new GiftDataImpl(giftID, origin);
 	}
 	
 	class GiftDataImpl implements GiftData {
 		int giftID;
 		
-		Origin origin;
+		long origin;
 		
-		GiftDataImpl(int giftID, Origin origin) {
+		GiftDataImpl(int giftID, long origin) {
 			this.giftID = giftID;
 			this.origin = origin;
 		}
@@ -36,7 +34,7 @@ public interface GiftData extends OriginData {
 		}
 
 		@Override
-		public Origin getOrigin() {
+		public long getOrigin() {
 			return origin;
 		}
 	}

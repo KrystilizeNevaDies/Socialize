@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import socialize.data.OriginData;
 import socialize.database.SetDatabase;
+import socialize.tracing.Origin;
 
 public class SetDatabaseImpl<T extends OriginData> implements SetDatabase<T> {
 	Set<T> set;
@@ -23,7 +24,13 @@ public class SetDatabaseImpl<T extends OriginData> implements SetDatabase<T> {
 	public T get(Predicate<T> condition) {
 		Optional<T> optional = set.stream()
 			.filter(condition)
-			.sorted((dataA, dataB) -> (int) (dataA.getOrigin().getDate().getTime() - dataB.getOrigin().getDate().getTime())) // TODO: Test to ensure this sort is correct
+			.sorted((dataA, dataB) -> {
+				
+				long aTime = Origin.ORIGIN_MAP.get(dataA.getOrigin()).getDate().getTime();
+				long bTime = Origin.ORIGIN_MAP.get(dataB.getOrigin()).getDate().getTime();
+				
+				return (int) (aTime - bTime);
+			}) // TODO: Test to ensure this sort is correct
 			.findFirst();
 		return optional.orElse(null);
 	}
