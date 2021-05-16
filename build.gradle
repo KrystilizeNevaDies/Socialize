@@ -27,6 +27,5 @@ sourceSets {
 dependencies {
 	testImplementation("junit:junit:4.13")
 
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    implementation 'com.github.Minestom:Minestom:-SNAPSHOT'
+    implementation 'com.github.Minestom:Minestom:d31fe2d88e'
 }
