@@ -14,16 +14,16 @@ public interface CoinsData extends CurrencyTransactionData {
 	 * 
 	 * @return data
 	 */
-	public static CoinsData from(double amount, long origin) {
-		return new CoinsDataImpl(amount, origin);
+	public static <T> CoinsData from(double amount, T origin) {
+		return new CoinsDataImpl<>(amount, origin);
 	}
 	
-	class CoinsDataImpl implements CoinsData {
+	class CoinsDataImpl<T> implements CoinsData {
 		double amount;
 		
-		long origin;
+		T origin;
 		
-		CoinsDataImpl(double amount, long origin) {
+		CoinsDataImpl(double amount, T origin) {
 			this.amount = amount;
 			this.origin = origin;
 		}
@@ -33,8 +33,9 @@ public interface CoinsData extends CurrencyTransactionData {
 			return amount;
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
-		public long getOrigin() {
+		public T getOriginID() {
 			return origin;
 		}
 	}

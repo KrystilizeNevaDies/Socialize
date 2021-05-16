@@ -4,7 +4,6 @@ import java.util.Map;
 
 import socialize.data.OriginData;
 import socialize.database.MapDatabase.EntryData;
-import socialize.tracing.Origin;
 
 /**
  * This database type is used to represent a connection between an external database and the server.
@@ -29,7 +28,7 @@ public interface MapDatabase<K, V extends OriginData> extends IDatabase<EntryDat
 		public V getValue();
 		
 		public default long getOrigin() {
-			return getValue().getOrigin();
+			return getValue().getOriginID();
 		}
 		
 		/**
@@ -58,6 +57,11 @@ public interface MapDatabase<K, V extends OriginData> extends IDatabase<EntryDat
 			@Override
 			public V getValue() {
 				return entry.getValue();
+			}
+
+			@Override
+			public <T> T getOriginID() {
+				return entry.getValue().getOriginID();
 			}
 		}
 	}

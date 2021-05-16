@@ -14,16 +14,16 @@ public interface BadgeData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static BadgeData from(int ID, long origin) {
-		return new BadgeDataImpl(ID, origin);
+	public static <T> BadgeData from(int ID, T origin) {
+		return new BadgeDataImpl<T>(ID, origin);
 	}
 	
-	class BadgeDataImpl implements BadgeData {
+	class BadgeDataImpl<T> implements BadgeData {
 		int ID;
 		
-		long origin;
+		T origin;
 		
-		BadgeDataImpl(int ID, long origin) {
+		BadgeDataImpl(int ID, T origin) {
 			this.ID = ID;
 			this.origin = origin;
 		}
@@ -33,8 +33,9 @@ public interface BadgeData extends OriginData {
 			return ID;
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
-		public long getOrigin() {
+		public T getOriginID() {
 			return origin;
 		}
 	}

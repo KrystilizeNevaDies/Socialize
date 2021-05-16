@@ -23,16 +23,16 @@ public interface FriendData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static FriendData from(UUID friend, long origin, boolean isFriend) {
-		return new FriendDataImpl(friend, origin, isFriend);
+	public static <T> FriendData from(UUID friend, boolean isFriend, T origin) {
+		return new FriendDataImpl<T>(friend, isFriend, origin);
 	}
 	
-	class FriendDataImpl implements FriendData {
+	class FriendDataImpl<T> implements FriendData {
 		UUID friend;
-		long origin;
 		boolean isFriend;
+		T origin;
 		
-		FriendDataImpl(UUID friend, long origin, boolean isFriend) {
+		FriendDataImpl(UUID friend, boolean isFriend, T origin) {
 			this.friend = friend;
 			this.origin = origin;
 			this.isFriend = isFriend;
@@ -44,13 +44,14 @@ public interface FriendData extends OriginData {
 		}
 
 		@Override
-		public long getOrigin() {
-			return origin;
-		}
-
-		@Override
 		public boolean isFriend() {
 			return isFriend;
+		}
+		
+		@SuppressWarnings("unchecked")
+		@Override
+		public T getOriginID() {
+			return origin;
 		}
 	}
 }

@@ -28,5 +28,5 @@ dependencies {
 	testImplementation("junit:junit:4.13")
 
     // This dependency is exported to consumers, that is to say found on their compile classpath.
-    runtimeOnly 'com.github.Minestom:Minestom:75da093475'
+    implementation 'com.github.Minestom:Minestom:-SNAPSHOT'
 }

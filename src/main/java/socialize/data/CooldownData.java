@@ -2,8 +2,6 @@ package socialize.data;
 
 import java.util.Date;
 
-import socialize.tracing.Origin;
-
 public interface CooldownData extends OriginData {
 	/**
 	 * Gets the exact time this cooldown was last consumed.
@@ -17,14 +15,15 @@ public interface CooldownData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static CooldownData from(Date lastConsumed) {
-		return new CooldownDataImpl(lastConsumed);
+	public static <T> CooldownData from(Date lastConsumed, T origin) {
+		return new CooldownDataImpl<T>(lastConsumed, origin);
 	}
 	
-	class CooldownDataImpl implements CooldownData {
+	class CooldownDataImpl<T> implements CooldownData {
 		Date lastConsumed;
 		
-		CooldownDataImpl(Date lastConsumed) {
+		T origin;
+		CooldownDataImpl(Date lastConsumed, T origin) {
 			this.lastConsumed = lastConsumed;
 		}
 
@@ -33,9 +32,10 @@ public interface CooldownData extends OriginData {
 			return lastConsumed;
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
-		public long getOrigin() {
-			return Origin.ROOT;
+		public T getOriginID() {
+			return origin;
 		}
 	}
 }

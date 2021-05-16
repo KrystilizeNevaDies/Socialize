@@ -2,9 +2,9 @@ package socialize.data;
 
 public interface OriginData {
 	/**
-	 * Gets the data's origin
+	 * Gets the data's origin's ID
 	 * 
-	 * @return Origin
+	 * @return Origin's ID
 	 */
-	public long getOrigin();
+	public <T> T getOriginID();
 }

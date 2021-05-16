@@ -14,16 +14,16 @@ public interface BackgroundData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static BackgroundData from(int ID, long origin) {
-		return new BackgroundDataImpl(ID, origin);
+	public static <T> BackgroundData from(int ID, T origin) {
+		return new BackgroundDataImpl<T>(ID, origin);
 	}
 	
-	class BackgroundDataImpl implements BackgroundData {
+	class BackgroundDataImpl<T> implements BackgroundData {
 		int ID;
 		
-		long origin;
+		T origin;
 		
-		BackgroundDataImpl(int ID, long origin) {
+		BackgroundDataImpl(int ID, T origin) {
 			this.ID = ID;
 			this.origin = origin;
 		}
@@ -33,8 +33,9 @@ public interface BackgroundData extends OriginData {
 			return ID;
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
-		public long getOrigin() {
+		public T getOriginID() {
 			return origin;
 		}
 	}

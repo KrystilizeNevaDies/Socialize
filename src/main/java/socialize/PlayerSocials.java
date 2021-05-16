@@ -15,6 +15,7 @@ import socialize.database.FriendDatabase;
 import socialize.database.MapDatabase;
 import socialize.database.SelectedSetDatabase;
 import socialize.database.SetDatabase;
+import socialize.tracing.OriginRegistry;
 
 /*
  * This class is used to retrieve the data related to player socials
@@ -47,6 +48,7 @@ public class PlayerSocials {
 	private FriendDatabase friend;
 	private SelectedSetDatabase<BioData> bio;
 	private SelectedSetDatabase<BackgroundData> background;
+	private OriginRegistry<?> originRegistry;
 	
 	private PlayerSocials(UUID uuid,
 			SetDatabase<MailData> mail,
@@ -57,7 +59,8 @@ public class PlayerSocials {
 			FriendDatabase friend,
 			SelectedSetDatabase<BioData> bio,
 			SelectedSetDatabase<BackgroundData> background,
-			MapDatabase<String, CooldownData> cooldown
+			MapDatabase<String, CooldownData> cooldown,
+			OriginRegistry<?> originRegistry
 	) {
 		this.mail = mail;
 		this.gift = gift;
@@ -68,6 +71,7 @@ public class PlayerSocials {
 		this.bio = bio;
 		this.background = background;
 		this.cooldown = cooldown;
+		this.originRegistry = originRegistry;
 	}
 	
 	public SetDatabase<MailData> getMail() {
@@ -106,6 +110,10 @@ public class PlayerSocials {
 		return cooldown;
 	}
 	
+	public OriginRegistry<?> getOriginRegistry() {
+		return originRegistry;
+	}
+	
 	public static class PlayerSocialsBuilder {
 		private UUID uuid;
 		
@@ -124,8 +132,8 @@ public class PlayerSocials {
 			this.uuid = uuid;
 		}
 
-		public PlayerSocials build() {
-			return new PlayerSocials(uuid, mail, gift, badge, shell, coin, friend, bio, background, cooldown);
+		public PlayerSocials build(OriginRegistry<?> originRegistry) {
+			return new PlayerSocials(uuid, mail, gift, badge, shell, coin, friend, bio, background, cooldown, originRegistry);
 		}
 
 		public PlayerSocialsBuilder setMailDatabase(SetDatabase<MailData> mail) {

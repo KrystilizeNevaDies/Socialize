@@ -14,16 +14,16 @@ public interface BioData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static BioData from(String bio, long origin) {
-		return new BioDataImpl(bio, origin);
+	public static <T> BioData from(String bio, T origin) {
+		return new BioDataImpl<T>(bio, origin);
 	}
 	
-	class BioDataImpl implements BioData {
+	class BioDataImpl<T> implements BioData {
 		String bio;
 		
-		long origin;
+		T origin;
 		
-		BioDataImpl(String bio, long origin) {
+		BioDataImpl(String bio, T origin) {
 			this.bio = bio;
 			this.origin = origin;
 		}
@@ -33,8 +33,9 @@ public interface BioData extends OriginData {
 			return bio;
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
-		public long getOrigin() {
+		public T getOriginID() {
 			return origin;
 		}
 	}

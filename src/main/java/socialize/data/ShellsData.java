@@ -10,29 +10,22 @@ public interface ShellsData extends CurrencyTransactionData {
 	public double getAmount();
 	
 	/**
-	 * Gets the transaction origin
-	 * 
-	 * @return Origin
-	 */
-	public long getOrigin();
-	
-	/**
 	 * Creates an immutable version of this data
 	 * 
 	 * @return data
 	 */
-	public static ShellsData from(double amount, long origin) {
-		return new ShellsDataImpl(amount, origin);
+	public static <T> ShellsData from(double amount, T origin) {
+		return new ShellsDataImpl<T>(amount, origin);
 	}
 	
-	class ShellsDataImpl implements ShellsData {
+	class ShellsDataImpl<T> implements ShellsData {
 		double amount;
 		
-		long origin;
+		T originID;
 		
-		ShellsDataImpl(double amount, long origin) {
+		ShellsDataImpl(double amount, T originID) {
 			this.amount = amount;
-			this.origin = origin;
+			this.originID = originID;
 		}
 		
 		@Override
@@ -40,9 +33,10 @@ public interface ShellsData extends CurrencyTransactionData {
 			return amount;
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
-		public long getOrigin() {
-			return origin;
+		public T getOriginID() {
+			return originID;
 		}
 	}
 }

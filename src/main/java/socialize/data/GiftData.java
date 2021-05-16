@@ -14,16 +14,16 @@ public interface GiftData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static GiftData from(int giftID, long origin) {
-		return new GiftDataImpl(giftID, origin);
+	public static <T> GiftData from(int giftID, T origin) {
+		return new GiftDataImpl<T>(giftID, origin);
 	}
 	
-	class GiftDataImpl implements GiftData {
+	class GiftDataImpl<T> implements GiftData {
 		int giftID;
 		
-		long origin;
+		T origin;
 		
-		GiftDataImpl(int giftID, long origin) {
+		GiftDataImpl(int giftID, T origin) {
 			this.giftID = giftID;
 			this.origin = origin;
 		}
@@ -33,8 +33,9 @@ public interface GiftData extends OriginData {
 			return giftID;
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
-		public long getOrigin() {
+		public T getOriginID() {
 			return origin;
 		}
 	}

@@ -14,16 +14,16 @@ public interface MailData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static MailData from(String bio, long origin) {
-		return new MailDataImpl(bio, origin);
+	public static <T> MailData from(String bio, T origin) {
+		return new MailDataImpl<T>(bio, origin);
 	}
 	
-	class MailDataImpl implements MailData {
+	class MailDataImpl<T> implements MailData {
 		String mail;
 		
-		long origin;
+		T origin;
 		
-		MailDataImpl(String mail, long origin) {
+		MailDataImpl(String mail, T origin) {
 			this.mail = mail;
 			this.origin = origin;
 		}
@@ -33,8 +33,9 @@ public interface MailData extends OriginData {
 			return mail;
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
-		public long getOrigin() {
+		public T getOriginID() {
 			return origin;
 		}
 	}
