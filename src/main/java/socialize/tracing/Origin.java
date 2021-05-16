@@ -9,9 +9,9 @@ import java.util.Date;
  */
 public abstract class Origin implements IOrigin {
 	protected Date date;
-	protected Origin parent;
+	protected Object parent;
 	
-	protected Origin(Origin parent, Date date) {
+	protected <T> Origin(T parent, Date date) {
 		this.date = date;
 		this.parent = parent;
 	}
@@ -24,8 +24,9 @@ public abstract class Origin implements IOrigin {
 		return date.toString();
 	};
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public Origin getParent() {
-		return parent;
+	public <T> T getParentID() {
+		return (T) parent;
 	}
 }
