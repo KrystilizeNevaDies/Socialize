@@ -1,5 +1,7 @@
 package socialize.data;
 
+import socialize.tracing.OriginReference;
+
 public interface BioData extends OriginData {
 	
 	/**
@@ -14,16 +16,16 @@ public interface BioData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static <T> BioData from(String bio, T origin) {
-		return new BioDataImpl<T>(bio, origin);
+	public static BioData from(String bio, OriginReference origin) {
+		return new BioDataImpl(bio, origin);
 	}
 	
-	class BioDataImpl<T> implements BioData {
+	class BioDataImpl implements BioData {
 		String bio;
 		
-		T origin;
+		OriginReference origin;
 		
-		BioDataImpl(String bio, T origin) {
+		BioDataImpl(String bio, OriginReference origin) {
 			this.bio = bio;
 			this.origin = origin;
 		}
@@ -33,9 +35,8 @@ public interface BioData extends OriginData {
 			return bio;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override
-		public T getOriginID() {
+		public OriginReference getOriginReference() {
 			return origin;
 		}
 	}

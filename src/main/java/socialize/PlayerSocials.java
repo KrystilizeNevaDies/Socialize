@@ -12,10 +12,9 @@ import socialize.data.MailData;
 import socialize.data.ShellsData;
 import socialize.database.CurrencyDatabase;
 import socialize.database.FriendDatabase;
+import socialize.database.IDatabase;
 import socialize.database.MapDatabase;
 import socialize.database.SelectedSetDatabase;
-import socialize.database.SetDatabase;
-import socialize.tracing.OriginRegistry;
 
 /*
  * This class is used to retrieve the data related to player socials
@@ -40,9 +39,9 @@ public class PlayerSocials {
     }
 	
 	private MapDatabase<String, CooldownData> cooldown;
-	private SetDatabase<MailData> mail;
-	private SetDatabase<GiftData> gift;
-	private SetDatabase<BadgeData> badge;
+	private IDatabase<MailData> mail;
+	private IDatabase<GiftData> gift;
+	private IDatabase<BadgeData> badge;
 	private CurrencyDatabase<ShellsData> shell;
 	private CurrencyDatabase<CoinsData> coin;
 	private FriendDatabase friend;
@@ -50,9 +49,9 @@ public class PlayerSocials {
 	private SelectedSetDatabase<BackgroundData> background;
 	
 	private PlayerSocials(UUID uuid,
-			SetDatabase<MailData> mail,
-			SetDatabase<GiftData> gift,
-			SetDatabase<BadgeData> badge,
+			IDatabase<MailData> mail,
+			IDatabase<GiftData> gift,
+			IDatabase<BadgeData> badge,
 			CurrencyDatabase<ShellsData> shell,
 			CurrencyDatabase<CoinsData> coin,
 			FriendDatabase friend,
@@ -71,15 +70,15 @@ public class PlayerSocials {
 		this.cooldown = cooldown;
 	}
 	
-	public SetDatabase<MailData> getMail() {
+	public IDatabase<MailData> getMail() {
 		return mail;
 	}
 
-	public SetDatabase<GiftData> getGifts() {
+	public IDatabase<GiftData> getGifts() {
 		return gift;
 	}
 	
-	public SetDatabase<BadgeData> getBadges() {
+	public IDatabase<BadgeData> getBadges() {
 		return badge;
 	}
 	
@@ -111,9 +110,9 @@ public class PlayerSocials {
 		private UUID uuid;
 		
 		// Databases
-		private SetDatabase<MailData> mail;
-		private SetDatabase<GiftData> gift;
-		private SetDatabase<BadgeData> badge;
+		private IDatabase<MailData> mail;
+		private IDatabase<GiftData> gift;
+		private IDatabase<BadgeData> badge;
 		private CurrencyDatabase<ShellsData> shell;
 		private CurrencyDatabase<CoinsData> coin;
 		private FriendDatabase friend;
@@ -129,17 +128,17 @@ public class PlayerSocials {
 			return new PlayerSocials(uuid, mail, gift, badge, shell, coin, friend, bio, background, cooldown);
 		}
 
-		public PlayerSocialsBuilder setMailDatabase(SetDatabase<MailData> mail) {
+		public PlayerSocialsBuilder setMailDatabase(IDatabase<MailData> mail) {
 			this.mail = mail;
 			return this;
 		}
 
-		public PlayerSocialsBuilder setGiftDatabase(SetDatabase<GiftData> gift) {
+		public PlayerSocialsBuilder setGiftDatabase(IDatabase<GiftData> gift) {
 			this.gift = gift;
 			return this;
 		}
 		
-		public PlayerSocialsBuilder setBadgeDatabase(SetDatabase<BadgeData> badge) {
+		public PlayerSocialsBuilder setBadgeDatabase(IDatabase<BadgeData> badge) {
 			this.badge = badge;
 			return this;
 		}

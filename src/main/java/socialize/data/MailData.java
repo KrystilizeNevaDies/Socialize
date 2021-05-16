@@ -1,5 +1,7 @@
 package socialize.data;
 
+import socialize.tracing.OriginReference;
+
 public interface MailData extends OriginData {
 	
 	/**
@@ -14,16 +16,16 @@ public interface MailData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static <T> MailData from(String bio, T origin) {
-		return new MailDataImpl<T>(bio, origin);
+	public static  MailData from(String bio, OriginReference origin) {
+		return new MailDataImpl(bio, origin);
 	}
 	
-	class MailDataImpl<T> implements MailData {
+	class MailDataImpl implements MailData {
 		String mail;
 		
-		T origin;
+		OriginReference origin;
 		
-		MailDataImpl(String mail, T origin) {
+		MailDataImpl(String mail, OriginReference origin) {
 			this.mail = mail;
 			this.origin = origin;
 		}
@@ -33,9 +35,8 @@ public interface MailData extends OriginData {
 			return mail;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override
-		public T getOriginID() {
+		public OriginReference getOriginReference() {
 			return origin;
 		}
 	}

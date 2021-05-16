@@ -1,5 +1,7 @@
 package socialize.data;
 
+import socialize.tracing.OriginReference;
+
 public interface ShellsData extends CurrencyTransactionData {
 	
 	/**
@@ -14,16 +16,16 @@ public interface ShellsData extends CurrencyTransactionData {
 	 * 
 	 * @return data
 	 */
-	public static <T> ShellsData from(double amount, T origin) {
-		return new ShellsDataImpl<T>(amount, origin);
+	public static  ShellsData from(double amount, OriginReference origin) {
+		return new ShellsDataImpl(amount, origin);
 	}
 	
-	class ShellsDataImpl<T> implements ShellsData {
+	class ShellsDataImpl implements ShellsData {
 		double amount;
 		
-		T originID;
+		OriginReference originID;
 		
-		ShellsDataImpl(double amount, T originID) {
+		ShellsDataImpl(double amount, OriginReference originID) {
 			this.amount = amount;
 			this.originID = originID;
 		}
@@ -33,9 +35,8 @@ public interface ShellsData extends CurrencyTransactionData {
 			return amount;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override
-		public T getOriginID() {
+		public OriginReference getOriginReference() {
 			return originID;
 		}
 	}

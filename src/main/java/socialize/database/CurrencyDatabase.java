@@ -7,9 +7,9 @@ import socialize.data.CurrencyTransactionData;
  * 
  * @author Krystilize
  *
- * @param <T>
+ * @param 
  */
-public interface CurrencyDatabase<T extends CurrencyTransactionData> extends SetDatabase<T> {
+public interface CurrencyDatabase<T extends CurrencyTransactionData> extends IDatabase<T> {
 	/**
 	 * Gets the total value of this currency
 	 * 

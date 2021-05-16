@@ -1,5 +1,7 @@
 package socialize.data;
 
+import socialize.tracing.OriginReference;
+
 public interface GiftData extends OriginData {
 	
 	/**
@@ -14,16 +16,16 @@ public interface GiftData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static <T> GiftData from(int giftID, T origin) {
-		return new GiftDataImpl<T>(giftID, origin);
+	public static  GiftData from(int giftID, OriginReference origin) {
+		return new GiftDataImpl(giftID, origin);
 	}
 	
-	class GiftDataImpl<T> implements GiftData {
+	class GiftDataImpl implements GiftData {
 		int giftID;
 		
-		T origin;
+		OriginReference origin;
 		
-		GiftDataImpl(int giftID, T origin) {
+		GiftDataImpl(int giftID, OriginReference origin) {
 			this.giftID = giftID;
 			this.origin = origin;
 		}
@@ -33,9 +35,8 @@ public interface GiftData extends OriginData {
 			return giftID;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override
-		public T getOriginID() {
+		public OriginReference getOriginReference() {
 			return origin;
 		}
 	}

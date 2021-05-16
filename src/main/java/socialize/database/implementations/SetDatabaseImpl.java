@@ -5,9 +5,9 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 import socialize.data.OriginData;
-import socialize.database.SetDatabase;
+import socialize.database.IDatabase;
 
-public class SetDatabaseImpl<T extends OriginData> implements SetDatabase<T> {
+public class SetDatabaseImpl<T extends OriginData> implements IDatabase<T> {
 	Set<T> set;
 	
 	public SetDatabaseImpl(Set<T> set) {
@@ -30,10 +30,5 @@ public class SetDatabaseImpl<T extends OriginData> implements SetDatabase<T> {
 	@Override
 	public void add(T data) {
 		set.add(data);
-	}
-
-	@Override
-	public Set<T> getSet() {
-		return set;
 	}
 }

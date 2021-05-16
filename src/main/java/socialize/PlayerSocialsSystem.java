@@ -7,13 +7,13 @@ import socialize.tracing.OriginRegistry;
  */
 public class PlayerSocialsSystem {
 	
-	private static OriginRegistry<?> registry;
+	private static OriginRegistry registry;
 	
-	public static void init(OriginRegistry<?> registry) {
+	public static void init(OriginRegistry registry) {
 		PlayerSocialsSystem.registry = registry;
 	}
 	
-	public static OriginRegistry<?> getOriginRegistry() {
+	public static OriginRegistry getOriginRegistry() {
 		return registry;
 	}
 }

@@ -1,11 +1,17 @@
 package socialize.tracing;
 
-public interface OriginRegistry<T> {
-	public T registerOrigin(Origin origin);
+import java.util.concurrent.Future;
+import java.util.function.Consumer;
+
+import org.jglrxavpok.hephaistos.nbt.NBTCompound;
+
+public interface OriginRegistry {
+	public OriginReference registerOrigin(NBTCompound origin);
 	
-	public Origin getOrigin(T id);
+	public void getOrigin(OriginReference reference, Consumer<NBTCompound> consumer);
+	public Future<NBTCompound> getOrigin(OriginReference reference);
 	
-	public Origin getRootOrigin();
+	public NBTCompound getRootOrigin();
 	
-	public T getRootOriginID();
+	public OriginReference getRootOriginReference();
 }

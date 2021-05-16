@@ -1,5 +1,7 @@
 package socialize.data;
 
+import socialize.tracing.OriginReference;
+
 public interface CoinsData extends CurrencyTransactionData {
 	
 	/**
@@ -14,16 +16,16 @@ public interface CoinsData extends CurrencyTransactionData {
 	 * 
 	 * @return data
 	 */
-	public static <T> CoinsData from(double amount, T origin) {
-		return new CoinsDataImpl<>(amount, origin);
+	public static  CoinsData from(double amount, OriginReference origin) {
+		return new CoinsDataImpl(amount, origin);
 	}
 	
-	class CoinsDataImpl<T> implements CoinsData {
+	class CoinsDataImpl implements CoinsData {
 		double amount;
 		
-		T origin;
+		OriginReference origin;
 		
-		CoinsDataImpl(double amount, T origin) {
+		CoinsDataImpl(double amount, OriginReference origin) {
 			this.amount = amount;
 			this.origin = origin;
 		}
@@ -33,9 +35,8 @@ public interface CoinsData extends CurrencyTransactionData {
 			return amount;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override
-		public T getOriginID() {
+		public OriginReference getOriginReference() {
 			return origin;
 		}
 	}

@@ -1,5 +1,7 @@
 package socialize.data;
 
+import socialize.tracing.OriginReference;
+
 public interface BadgeData extends OriginData {
 	
 	/**
@@ -14,16 +16,16 @@ public interface BadgeData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static <T> BadgeData from(int ID, T origin) {
-		return new BadgeDataImpl<T>(ID, origin);
+	public static BadgeData from(int ID, OriginReference origin) {
+		return new BadgeDataImpl(ID, origin);
 	}
 	
-	class BadgeDataImpl<T> implements BadgeData {
+	class BadgeDataImpl implements BadgeData {
 		int ID;
 		
-		T origin;
+		OriginReference origin;
 		
-		BadgeDataImpl(int ID, T origin) {
+		BadgeDataImpl(int ID, OriginReference origin) {
 			this.ID = ID;
 			this.origin = origin;
 		}
@@ -33,9 +35,8 @@ public interface BadgeData extends OriginData {
 			return ID;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override
-		public T getOriginID() {
+		public OriginReference getOriginReference() {
 			return origin;
 		}
 	}

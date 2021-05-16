@@ -1,5 +1,7 @@
 package socialize.data;
 
+import socialize.tracing.OriginReference;
+
 public interface BackgroundData extends OriginData {
 	
 	/**
@@ -14,16 +16,16 @@ public interface BackgroundData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static <T> BackgroundData from(int ID, T origin) {
-		return new BackgroundDataImpl<T>(ID, origin);
+	public static BackgroundData from(int ID, OriginReference origin) {
+		return new BackgroundDataImpl(ID, origin);
 	}
 	
-	class BackgroundDataImpl<T> implements BackgroundData {
+	class BackgroundDataImpl implements BackgroundData {
 		int ID;
 		
-		T origin;
+		OriginReference origin;
 		
-		BackgroundDataImpl(int ID, T origin) {
+		BackgroundDataImpl(int ID, OriginReference origin) {
 			this.ID = ID;
 			this.origin = origin;
 		}
@@ -33,9 +35,8 @@ public interface BackgroundData extends OriginData {
 			return ID;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override
-		public T getOriginID() {
+		public OriginReference getOriginReference() {
 			return origin;
 		}
 	}
