@@ -48,7 +48,6 @@ public class PlayerSocials {
 	private FriendDatabase friend;
 	private SelectedSetDatabase<BioData> bio;
 	private SelectedSetDatabase<BackgroundData> background;
-	private OriginRegistry<?> originRegistry;
 	
 	private PlayerSocials(UUID uuid,
 			SetDatabase<MailData> mail,
@@ -59,8 +58,7 @@ public class PlayerSocials {
 			FriendDatabase friend,
 			SelectedSetDatabase<BioData> bio,
 			SelectedSetDatabase<BackgroundData> background,
-			MapDatabase<String, CooldownData> cooldown,
-			OriginRegistry<?> originRegistry
+			MapDatabase<String, CooldownData> cooldown
 	) {
 		this.mail = mail;
 		this.gift = gift;
@@ -71,7 +69,6 @@ public class PlayerSocials {
 		this.bio = bio;
 		this.background = background;
 		this.cooldown = cooldown;
-		this.originRegistry = originRegistry;
 	}
 	
 	public SetDatabase<MailData> getMail() {
@@ -110,10 +107,6 @@ public class PlayerSocials {
 		return cooldown;
 	}
 	
-	public OriginRegistry<?> getOriginRegistry() {
-		return originRegistry;
-	}
-	
 	public static class PlayerSocialsBuilder {
 		private UUID uuid;
 		
@@ -132,8 +125,8 @@ public class PlayerSocials {
 			this.uuid = uuid;
 		}
 
-		public PlayerSocials build(OriginRegistry<?> originRegistry) {
-			return new PlayerSocials(uuid, mail, gift, badge, shell, coin, friend, bio, background, cooldown, originRegistry);
+		public PlayerSocials build() {
+			return new PlayerSocials(uuid, mail, gift, badge, shell, coin, friend, bio, background, cooldown);
 		}
 
 		public PlayerSocialsBuilder setMailDatabase(SetDatabase<MailData> mail) {
