@@ -6,4 +6,6 @@ public interface OriginRegistry<T> {
 	public Origin getOrigin(T id);
 	
 	public Origin getRootOrigin();
+	
+	public T getRootOriginID();
 }
