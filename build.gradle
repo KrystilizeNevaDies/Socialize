@@ -27,5 +27,5 @@ sourceSets {
 dependencies {
 	testImplementation("junit:junit:4.13")
 
-    implementation 'com.github.Minestom:Minestom:d31fe2d88e'
+    implementation 'com.github.Minestom:Minestom:c4b3e40'
 }
