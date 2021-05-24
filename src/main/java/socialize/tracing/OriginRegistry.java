@@ -9,10 +9,8 @@ import org.jglrxavpok.hephaistos.nbt.NBTCompound;
 public interface OriginRegistry {
 	public UUID registerOrigin(NBTCompound origin);
 	
-	public void getOrigin(UUID reference, Consumer<NBTCompound> consumer);
-	public Future<NBTCompound> getOrigin(UUID reference);
+	public void retrieveOrigin(UUID reference, Consumer<NBTCompound> consumer);
+	public Future<NBTCompound> retrieveOrigin(UUID reference);
 	
-	public NBTCompound getRootOrigin();
-	
-	public UUID getRootUUID();
+	public UUID getRootOrigin();
 }
