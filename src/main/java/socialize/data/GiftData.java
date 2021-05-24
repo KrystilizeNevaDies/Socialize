@@ -1,6 +1,6 @@
 package socialize.data;
 
-import socialize.tracing.OriginReference;
+import java.util.UUID;
 
 public interface GiftData extends OriginData {
 	
@@ -16,16 +16,16 @@ public interface GiftData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static  GiftData from(int giftID, OriginReference origin) {
+	public static  GiftData from(int giftID, UUID origin) {
 		return new GiftDataImpl(giftID, origin);
 	}
 	
 	class GiftDataImpl implements GiftData {
 		int giftID;
 		
-		OriginReference origin;
+		UUID origin;
 		
-		GiftDataImpl(int giftID, OriginReference origin) {
+		GiftDataImpl(int giftID, UUID origin) {
 			this.giftID = giftID;
 			this.origin = origin;
 		}
@@ -36,7 +36,7 @@ public interface GiftData extends OriginData {
 		}
 
 		@Override
-		public OriginReference getOriginReference() {
+		public UUID getOrigin() {
 			return origin;
 		}
 	}

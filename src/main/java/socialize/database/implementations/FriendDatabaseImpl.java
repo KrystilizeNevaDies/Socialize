@@ -14,6 +14,6 @@ public class FriendDatabaseImpl extends SetDatabaseImpl<FriendData> implements F
 
 	@Override
 	public FriendData getFriend(UUID uuid) {
-		return this.get(data -> data.getUUID().equals(uuid));
+		return this.get(data -> data.getOrigin().equals(uuid));
 	}
 }

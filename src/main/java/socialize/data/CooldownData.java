@@ -1,8 +1,7 @@
 package socialize.data;
 
 import java.util.Date;
-
-import socialize.tracing.OriginReference;
+import java.util.UUID;
 
 public interface CooldownData extends OriginData {
 	/**
@@ -17,15 +16,15 @@ public interface CooldownData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static  CooldownData from(Date lastConsumed, OriginReference origin) {
+	public static  CooldownData from(Date lastConsumed, UUID origin) {
 		return new CooldownDataImpl(lastConsumed, origin);
 	}
 	
 	class CooldownDataImpl implements CooldownData {
 		Date lastConsumed;
 		
-		OriginReference origin;
-		CooldownDataImpl(Date lastConsumed, OriginReference origin) {
+		UUID origin;
+		CooldownDataImpl(Date lastConsumed, UUID origin) {
 			this.lastConsumed = lastConsumed;
 		}
 
@@ -35,7 +34,7 @@ public interface CooldownData extends OriginData {
 		}
 
 		@Override
-		public OriginReference getOriginReference() {
+		public UUID getOrigin() {
 			return origin;
 		}
 	}

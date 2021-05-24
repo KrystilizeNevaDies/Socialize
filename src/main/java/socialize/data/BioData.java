@@ -1,6 +1,6 @@
 package socialize.data;
 
-import socialize.tracing.OriginReference;
+import java.util.UUID;
 
 public interface BioData extends OriginData {
 	
@@ -16,16 +16,16 @@ public interface BioData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static BioData from(String bio, OriginReference origin) {
+	public static BioData from(String bio, UUID origin) {
 		return new BioDataImpl(bio, origin);
 	}
 	
 	class BioDataImpl implements BioData {
 		String bio;
 		
-		OriginReference origin;
+		UUID origin;
 		
-		BioDataImpl(String bio, OriginReference origin) {
+		BioDataImpl(String bio, UUID origin) {
 			this.bio = bio;
 			this.origin = origin;
 		}
@@ -36,7 +36,7 @@ public interface BioData extends OriginData {
 		}
 
 		@Override
-		public OriginReference getOriginReference() {
+		public UUID getOrigin() {
 			return origin;
 		}
 	}

@@ -2,8 +2,6 @@ package socialize.data;
 
 import java.util.UUID;
 
-import socialize.tracing.OriginReference;
-
 public interface FriendData extends OriginData {
 	
 	/**
@@ -11,7 +9,7 @@ public interface FriendData extends OriginData {
 	 * 
 	 * @return ID
 	 */
-	public UUID getUUID();
+	public UUID getFriend();
 	
 	/**
 	 * Gets whether this data denotes a new friendship or a friendship termination.
@@ -25,23 +23,23 @@ public interface FriendData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static  FriendData from(UUID friend, boolean isFriend, OriginReference origin) {
+	public static  FriendData from(UUID friend, boolean isFriend, UUID origin) {
 		return new FriendDataImpl(friend, isFriend, origin);
 	}
 	
 	class FriendDataImpl implements FriendData {
 		UUID friend;
 		boolean isFriend;
-		OriginReference origin;
+		UUID origin;
 		
-		FriendDataImpl(UUID friend, boolean isFriend, OriginReference origin) {
+		FriendDataImpl(UUID friend, boolean isFriend, UUID origin) {
 			this.friend = friend;
 			this.origin = origin;
 			this.isFriend = isFriend;
 		}
 		
 		@Override
-		public UUID getUUID() {
+		public UUID getFriend() {
 			return friend;
 		}
 
@@ -51,7 +49,7 @@ public interface FriendData extends OriginData {
 		}
 		
 		@Override
-		public OriginReference getOriginReference() {
+		public UUID getOrigin() {
 			return origin;
 		}
 	}

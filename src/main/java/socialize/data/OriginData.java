@@ -1,6 +1,6 @@
 package socialize.data;
 
-import socialize.tracing.OriginReference;
+import java.util.UUID;
 
 public interface OriginData {
 	/**
@@ -8,5 +8,5 @@ public interface OriginData {
 	 * 
 	 * @return Origin's ID
 	 */
-	public OriginReference getOriginReference();
+	public UUID getOrigin();
 }

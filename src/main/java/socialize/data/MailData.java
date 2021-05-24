@@ -1,6 +1,6 @@
 package socialize.data;
 
-import socialize.tracing.OriginReference;
+import java.util.UUID;
 
 public interface MailData extends OriginData {
 	
@@ -16,16 +16,16 @@ public interface MailData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static  MailData from(String bio, OriginReference origin) {
+	public static  MailData from(String bio, UUID origin) {
 		return new MailDataImpl(bio, origin);
 	}
 	
 	class MailDataImpl implements MailData {
 		String mail;
 		
-		OriginReference origin;
+		UUID origin;
 		
-		MailDataImpl(String mail, OriginReference origin) {
+		MailDataImpl(String mail, UUID origin) {
 			this.mail = mail;
 			this.origin = origin;
 		}
@@ -36,7 +36,7 @@ public interface MailData extends OriginData {
 		}
 
 		@Override
-		public OriginReference getOriginReference() {
+		public UUID getOrigin() {
 			return origin;
 		}
 	}

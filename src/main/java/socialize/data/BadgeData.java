@@ -1,6 +1,6 @@
 package socialize.data;
 
-import socialize.tracing.OriginReference;
+import java.util.UUID;
 
 public interface BadgeData extends OriginData {
 	
@@ -16,16 +16,16 @@ public interface BadgeData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static BadgeData from(int ID, OriginReference origin) {
+	public static BadgeData from(int ID, UUID origin) {
 		return new BadgeDataImpl(ID, origin);
 	}
 	
 	class BadgeDataImpl implements BadgeData {
 		int ID;
 		
-		OriginReference origin;
+		UUID origin;
 		
-		BadgeDataImpl(int ID, OriginReference origin) {
+		BadgeDataImpl(int ID, UUID origin) {
 			this.ID = ID;
 			this.origin = origin;
 		}
@@ -36,7 +36,7 @@ public interface BadgeData extends OriginData {
 		}
 
 		@Override
-		public OriginReference getOriginReference() {
+		public UUID getOrigin() {
 			return origin;
 		}
 	}

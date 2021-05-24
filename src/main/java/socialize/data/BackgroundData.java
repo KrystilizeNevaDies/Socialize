@@ -1,6 +1,6 @@
 package socialize.data;
 
-import socialize.tracing.OriginReference;
+import java.util.UUID;
 
 public interface BackgroundData extends OriginData {
 	
@@ -16,16 +16,16 @@ public interface BackgroundData extends OriginData {
 	 * 
 	 * @return data
 	 */
-	public static BackgroundData from(int ID, OriginReference origin) {
+	public static BackgroundData from(int ID, UUID origin) {
 		return new BackgroundDataImpl(ID, origin);
 	}
 	
 	class BackgroundDataImpl implements BackgroundData {
 		int ID;
 		
-		OriginReference origin;
+		UUID origin;
 		
-		BackgroundDataImpl(int ID, OriginReference origin) {
+		BackgroundDataImpl(int ID, UUID origin) {
 			this.ID = ID;
 			this.origin = origin;
 		}
@@ -36,7 +36,7 @@ public interface BackgroundData extends OriginData {
 		}
 
 		@Override
-		public OriginReference getOriginReference() {
+		public UUID getOrigin() {
 			return origin;
 		}
 	}

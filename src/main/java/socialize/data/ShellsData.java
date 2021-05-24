@@ -1,6 +1,6 @@
 package socialize.data;
 
-import socialize.tracing.OriginReference;
+import java.util.UUID;
 
 public interface ShellsData extends CurrencyTransactionData {
 	
@@ -16,16 +16,16 @@ public interface ShellsData extends CurrencyTransactionData {
 	 * 
 	 * @return data
 	 */
-	public static  ShellsData from(double amount, OriginReference origin) {
+	public static  ShellsData from(double amount, UUID origin) {
 		return new ShellsDataImpl(amount, origin);
 	}
 	
 	class ShellsDataImpl implements ShellsData {
 		double amount;
 		
-		OriginReference originID;
+		UUID originID;
 		
-		ShellsDataImpl(double amount, OriginReference originID) {
+		ShellsDataImpl(double amount, UUID originID) {
 			this.amount = amount;
 			this.originID = originID;
 		}
@@ -36,7 +36,7 @@ public interface ShellsData extends CurrencyTransactionData {
 		}
 
 		@Override
-		public OriginReference getOriginReference() {
+		public UUID getOrigin() {
 			return originID;
 		}
 	}
