@@ -1,5 +1,7 @@
 package socialize.database.implementations;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -14,6 +16,19 @@ public class FriendDatabaseImpl extends SetDatabaseImpl<FriendData> implements F
 
 	@Override
 	public FriendData getFriend(UUID uuid) {
-		return this.get(data -> data.getOrigin().equals(uuid));
+		return this.get(data -> data.getFriend().equals(uuid));
+	}
+
+	@Override
+	public Map<UUID, FriendData> getFriends() {
+		
+		Map<UUID, FriendData> map = new HashMap<>();
+		
+		getAll()
+			.stream()
+			.filter(data -> data.isFriend())
+			.forEach(data -> map.put(data.getFriend(), data));
+		
+		return map;
 	}
 }

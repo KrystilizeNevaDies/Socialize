@@ -1,5 +1,6 @@
 package socialize.database;
 
+import java.util.Map;
 import java.util.UUID;
 
 import socialize.data.FriendData;
@@ -13,8 +14,11 @@ import socialize.data.FriendData;
 public interface FriendDatabase extends IDatabase<FriendData> {
 	/**
 	 * Gets the most recent friends object represented by this uuid, null if none
-	 * 
-	 * @return set
 	 */
 	public FriendData getFriend(UUID uuid);
+	
+	/**
+	 * Gets a full map of all of your current friends.
+	 */
+	public Map<UUID, FriendData> getFriends();
 }
