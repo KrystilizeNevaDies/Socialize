@@ -9,29 +9,28 @@ public interface BackgroundData extends OriginData {
 	 * 
 	 * @return ID
 	 */
-	public int getID();
+	public String getID();
 	
 	/**
 	 * Creates an immutable version of this data
 	 * 
 	 * @return data
 	 */
-	public static BackgroundData from(int ID, UUID origin) {
+	public static BackgroundData from(String ID, UUID origin) {
 		return new BackgroundDataImpl(ID, origin);
 	}
 	
 	class BackgroundDataImpl implements BackgroundData {
-		int ID;
-		
+		String ID;
 		UUID origin;
 		
-		BackgroundDataImpl(int ID, UUID origin) {
+		BackgroundDataImpl(String ID, UUID origin) {
 			this.ID = ID;
 			this.origin = origin;
 		}
 		
 		@Override
-		public int getID() {
+		public String getID() {
 			return ID;
 		}
 
