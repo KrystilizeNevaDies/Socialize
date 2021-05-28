@@ -5,16 +5,17 @@ import java.util.Set;
 import socialize.data.OriginData;
 import socialize.database.SelectedSetDatabase;
 
-public class SelectedSetDatabaseImpl<T extends OriginData> extends SetDatabaseImpl<T> implements SelectedSetDatabase<T> {
-	
+public class SelectedSetDatabaseImpl<T extends OriginData> extends SetDatabaseImpl<T>
+		implements SelectedSetDatabase<T> {
+
 	T selected;
-	
+
 	public SelectedSetDatabaseImpl(Set<T> set, T selected) {
 		super(set);
-		
+
 		this.selected = selected;
 	}
-	
+
 	@Override
 	public T getSelected() {
 		return selected;

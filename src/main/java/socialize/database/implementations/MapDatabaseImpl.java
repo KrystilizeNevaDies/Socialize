@@ -10,7 +10,7 @@ import socialize.database.MapDatabase;
 
 public class MapDatabaseImpl<K, V extends OriginData> implements MapDatabase<K, V> {
 	Map<K, V> map;
-	
+
 	public MapDatabaseImpl(Map<K, V> map) {
 		this.map = map;
 	}
@@ -18,11 +18,7 @@ public class MapDatabaseImpl<K, V extends OriginData> implements MapDatabase<K, 
 	@Override
 	public EntryData<K, V> get(Predicate<EntryData<K, V>> condition) {
 		// TODO: Ensure that the most recent value is retrieved
-		return map.entrySet().stream()
-			.map(EntryData::fromMapEntry)
-			.filter(condition)
-			.findAny()
-			.orElse(null);
+		return map.entrySet().stream().map(EntryData::fromMapEntry).filter(condition).findAny().orElse(null);
 	}
 
 	@Override
@@ -37,8 +33,6 @@ public class MapDatabaseImpl<K, V extends OriginData> implements MapDatabase<K, 
 
 	@Override
 	public Set<EntryData<K, V>> getAll() {
-		return map.entrySet().stream()
-			.map(EntryData::fromMapEntry)
-			.collect(Collectors.toSet());
+		return map.entrySet().stream().map(EntryData::fromMapEntry).collect(Collectors.toSet());
 	}
 }

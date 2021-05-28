@@ -16,19 +16,16 @@ public class FriendDatabaseImpl extends SetDatabaseImpl<FriendData> implements F
 
 	@Override
 	public FriendData getFriend(UUID uuid) {
-		return this.get(data -> data.getFriend().equals(uuid));
+		return get(data -> data.getFriend().equals(uuid));
 	}
 
 	@Override
 	public Map<UUID, FriendData> getFriends() {
-		
-		Map<UUID, FriendData> map = new HashMap<>();
-		
-		getAll()
-			.stream()
-			.filter(data -> data.isFriend())
-			.forEach(data -> map.put(data.getFriend(), data));
-		
+
+		final Map<UUID, FriendData> map = new HashMap<>();
+
+		getAll().stream().filter(FriendData::isFriend).forEach(data -> map.put(data.getFriend(), data));
+
 		return map;
 	}
 }

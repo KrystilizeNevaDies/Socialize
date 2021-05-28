@@ -9,11 +9,11 @@ import socialize.database.IDatabase;
 
 public class SetDatabaseImpl<T extends OriginData> implements IDatabase<T> {
 	Set<T> set;
-	
+
 	public SetDatabaseImpl(Set<T> set) {
 		this.set = set;
 	}
-	
+
 	@Override
 	public Set<T> getAll() {
 		return set;
@@ -21,9 +21,8 @@ public class SetDatabaseImpl<T extends OriginData> implements IDatabase<T> {
 
 	@Override
 	public T get(Predicate<T> condition) {
-		Optional<T> optional = set.stream()
-			.filter(condition)
-			.findFirst(); // TODO: Test to ensure this order is correct
+		final Optional<T> optional = set.stream().filter(condition).findFirst(); // TODO: Test to ensure this order is
+																					// correct
 		return optional.orElse(null);
 	}
 
